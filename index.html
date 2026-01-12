@@ -177,13 +177,13 @@
             </div>
 
 			<div class="command">
-                <div class="command-name">#level</div>
-                <div class="command-desc">名前+トリップ、自分のレベルを表示します。レベルは1-3まであります。</div>
+                <div class="command-name">#level [username]</div>
+                <div class="command-desc">名前+トリップ、自分のレベルを表示します。レベルは1-3まであります。カジノレベルも表示します。usernameを指定しなければ自分の物を表示します。</div>
             </div>
             
             <div class="command">
                 <div class="command-name">#whoami</div>
-                <div class="command-desc">あなたの名前、トリップ、権限レベルを表示します</div>
+                <div class="command-desc">あなたについて表示します</div>
             </div>
             
             <div class="command">
@@ -197,6 +197,90 @@
             </div>
         </div>
         
+            <div class="command">
+                <div class="command-name">#balance [username]</div>
+                <div class="command-desc">口座残高を表示します。usernameを指定しなければ自分の物を表示します。</div>
+            </div>
+        </div>
+
+            <div class="command">
+                <div class="command-name">#work</div>
+                <div class="command-desc">仕事をしてネギを得るコマンド。基本給1000ネギ casino levelが1つ上がるにつれてもらえるネギは倍になる。クールダウンは4時間</div>
+            </div>
+        </div>     
+
+        <div class="command">
+                <div class="command-name">#slot</div>
+                <div class="command-desc">slot系のコマンドについて説明してくれる</div>
+            </div>
+        </div>  
+        
+        <div class="command">
+                <div class="command-name">#slot start [bet]</div>
+                <div class="command-desc">slotを始める。betが賭け金。</div>
+            </div>
+        </div>  
+
+        <div class="command">
+                <div class="command-name">#roulette</div>
+                <div class="command-desc">#roulette系のコマンドについて説明してくれる</div>
+            </div>
+        </div>  
+        
+        <div class="command">
+                <div class="command-name">#roulette start [bet]</div>
+                <div class="command-desc">#rouletteを始める。betが賭け金。</div>
+            </div>
+        </div>  
+
+        <div class="command">
+                <div class="command-name">#blackjack</div>
+                <div class="command-desc">#blackjack系のコマンドについて説明してくれる</div>
+            </div>
+        </div>  
+        
+        <div class="command">
+                <div class="command-name">#blackjack start [bet]</div>
+                <div class="command-desc">#blackjackを始める。betが賭け金。</div>
+            </div>
+        </div>  
+
+        <div class="command">
+                <div class="command-name">#blackjack hit / #blackjack stand</div>
+                <div class="command-desc">#blackjackの操作コマンド。</div>
+            </div>
+        </div>  
+
+        <div class="command">
+                <div class="command-name">#poker</div>
+                <div class="command-desc">#poker系のコマンドについて説明してくれる</div>
+            </div>
+        </div>  
+        
+        <div class="command">
+                <div class="command-name">#blackjack start [bet]</div>
+                <div class="command-desc">#pokerを始める。betが賭け金。</div>
+            </div>
+        </div>  
+
+        <div class="command">
+                <div class="command-name">#poker hold [num1] [num2] / #poker draw
+                <div class="command-desc">#保持したいカード番号(1〜5)を指定。指定がない場合は全て引き直す。 / ドローする。 </div>
+            </div>
+        </div>  
+
+        <div class="command">
+                <div class="command-name">#dice [faces]</div>
+                <div class="command-desc">#diceを振る。facesは目の数。</div>
+            </div>
+        </div>  
+
+        <div class="command">
+                <div class="command-name">#math [formula]</div>
+                <div class="command-desc">数式を直接入力して計算。サポート: + - * / % ** ^ は ** として扱う。括弧、単項演算。関数呼び出しや名前参照は不可。</div>
+            </div>
+        </div>  
+
         <div class="card">
             <h2>管理者コマンド</h2>
             <p style="color: #666; margin-bottom: 20px;">※レベル3の権限が必要です</p>
@@ -214,6 +298,18 @@
             <div class="command">
                 <div class="command-name">#sudo reboot<span class="badge admin">lv.3</span></div>
                 <div class="command-desc">村を建て直します（終了→新規作成）</div>
+            </div>
+        </div>
+
+            <div class="command">
+                <div class="command-name">#add money [username] [amount]<span class="badge admin">lv.3</span></div>
+                <div class="command-desc">指定ユーザーに残高を追加。</div>
+            </div>
+        </div>
+
+            <div class="command">
+                <div class="command-name">#sub money [username] [amount]<span class="badge admin">lv.3</span></div>
+                <div class="command-desc">指定ユーザーの残高を減らす。</div>
             </div>
         </div>
         
