@@ -5,421 +5,338 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEGIRA.BOT</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+            background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+            color:#1a1a1a;line-height:1.6;min-height:100vh;
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #1a1a1a;
-            line-height: 1.6;
-            min-height: 100vh;
+        .container{max-width:900px;margin:0 auto;padding:40px 20px;}
+        header{text-align:center;margin-bottom:60px;color:white;}
+        .logo{
+            width:120px;height:120px;background:white;border-radius:30px;
+            margin:0 auto 20px;display:flex;align-items:center;justify-content:center;
+            font-size:60px;box-shadow:0 10px 30px rgba(0,0,0,.2);
         }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        h1{font-size:3em;margin-bottom:10px;font-weight:700;}
+        .subtitle{font-size:1.2em;opacity:.9;}
+        .card{
+            background:white;border-radius:20px;padding:30px;
+            margin-bottom:20px;box-shadow:0 10px 40px rgba(0,0,0,.1);
         }
-        
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-            color: white;
+        h2{font-size:1.8em;margin-bottom:20px;color:#667eea;}
+        .command{
+            background:#f7f9fc;border-left:4px solid #667eea;
+            padding:15px 20px;margin-bottom:15px;border-radius:8px;
+            transition:transform .2s;
         }
-        
-        .logo {
-            width: 120px;
-            height: 120px;
-            background: white;
-            border-radius: 30px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        .command:hover{transform:translateX(5px);}
+        .command-name{
+            font-family:'Courier New',monospace;font-weight:bold;
+            color:#667eea;font-size:1.1em;margin-bottom:5px;
         }
-        
-        h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            font-weight: 700;
+        .command-desc{color:#666;font-size:.95em;}
+        .badge{
+            display:inline-block;background:#ffd93d;color:#1a1a1a;
+            padding:3px 10px;border-radius:12px;font-size:.8em;
+            font-weight:bold;margin-left:10px;
         }
-        
-        .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
+        .badge.admin{background:#ff6b6b;color:white;}
+        .info-box{
+            background:linear-gradient(135deg,#667eea22 0%,#764ba222 100%);
+            border-radius:12px;padding:20px;margin-top:20px;
         }
-        
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-        
-        h2 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: #667eea;
-        }
-        
-        .command {
-            background: #f7f9fc;
-            border-left: 4px solid #667eea;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            transition: transform 0.2s;
-        }
-        
-        .command:hover {
-            transform: translateX(5px);
-        }
-        
-        .command-name {
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            color: #667eea;
-            font-size: 1.1em;
-            margin-bottom: 5px;
-        }
-        
-        .command-desc {
-            color: #666;
-            font-size: 0.95em;
-        }
-        
-        .badge {
-            display: inline-block;
-            background: #ffd93d;
-            color: #1a1a1a;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.8em;
-            font-weight: bold;
-            margin-left: 10px;
-        }
-        
-        .badge.admin {
-            background: #ff6b6b;
-            color: white;
-        }
-        
-        .info-box {
-            background: linear-gradient(135deg, #667eea22 0%, #764ba222 100%);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-        
-        .info-box h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-        
-        ul {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-        
-        li {
-            margin-bottom: 8px;
-        }
-        
-        footer {
-            text-align: center;
-            color: white;
-            margin-top: 60px;
-            opacity: 0.8;
-        }
-        
-        a {
-            color: #667eea;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
+        .info-box h3{color:#667eea;margin-bottom:10px;}
+        ul{margin-left:20px;margin-top:10px;}
+        li{margin-bottom:8px;}
+        footer{text-align:center;color:white;margin-top:60px;opacity:.8;}
+        a{color:#667eea;text-decoration:none;}
+        a:hover{text-decoration:underline;}
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">🧅</div>
-            <h1>NEGIRA.BOT</h1>
-            <p class="subtitle">人狼Online BOT</p>
-            <p class="subtitle">長ネギの絵文字がなかったのでロゴは玉ネギで代用しました</p>
-        </header>
-        
-        <div class="card">
-            <h2>コマンド一覧</h2>
+<div class="container">
 
-            <div class="command">
-                <div class="command-name">#help</div>
-                <div class="command-desc">このヘルプページのURLを表示します</div>
-            </div>
+<header>
+    <div class="logo">🧅</div>
+    <h1>NEGIRA.BOT</h1>
+    <p class="subtitle">人狼Online BOT</p>
+    <p class="subtitle">長ネギの絵文字がなかったのでロゴは玉ネギで代用しました</p>
+</header>
 
-            <div class="command">
-                <div class="command-name">#status</div>
-                <div class="command-desc">村建てからの経過時間を表示します</div>
-            </div>
+<div class="card">
+<h2>コマンド一覧</h2>
 
-            <div class="command">
-                <div class="command-name">#ping</div>
-                <div class="command-desc">BOTの反応速度をテストします(簡易的)</div>
-            </div>
+<div class="command">
+<div class="command-name">#help</div>
+<div class="command-desc">このヘルプページのURLを表示します</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#lv [username]</div>
-                <div class="command-desc">名前+トリップ、自分のレベルを表示します。レベルは1-3まであります。カジノレベルも表示します。usernameを指定しなければ自分の物を表示します。</div>
-            </div>
+<div class="command">
+<div class="command-name">#status</div>
+<div class="command-desc">村建てからの経過時間を表示します</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#whoami</div>
-                <div class="command-desc">あなたについて表示します</div>
-            </div>
+<div class="command">
+<div class="command-name">#ping</div>
+<div class="command-desc">BOTの反応速度をテストします(簡易的)</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#rps</div>
-                <div class="command-desc">BOTとじゃんけんできます。グー・チョキ・パーのどれかを出します</div>
-            </div>
+<div class="command">
+<div class="command-name">#lv [username]</div>
+<div class="command-desc">名前+トリップ、自分のレベルを表示します。レベルは1-3まであります。カジノレベルも表示します。usernameを指定しなければ自分の物を表示します。</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#date</div>
-                <div class="command-desc">現在の日時を表示します</div>
-            </div>
+<div class="command">
+<div class="command-name">#whoami</div>
+<div class="command-desc">あなたについて表示します</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#bal [username]</div>
-                <div class="command-desc">口座残高を表示します。usernameを指定しなければ自分の物を表示します。</div>
-            </div>
+<div class="command">
+<div class="command-name">#rps</div>
+<div class="command-desc">BOTとじゃんけんできます。グー・チョキ・パーのどれかを出します</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#work</div>
-                <div class="command-desc">仕事をしてネギを得るコマンド。基本給1000ネギ。casino levelが1上がるごとに追加で1000ネギ。クールダウンは4時間。</div>
-            </div>
+<div class="command">
+<div class="command-name">#date</div>
+<div class="command-desc">現在の日時を表示します</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#slot</div>
-                <div class="command-desc">#slot系のコマンドについて説明してくれる</div>
-            </div>
+<div class="command">
+<div class="command-name">#bal [username]</div>
+<div class="command-desc">口座残高を表示します。usernameを指定しなければ自分の物を表示します。</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#slot start [bet]</div>
-                <div class="command-desc">#slotを始める。betが賭け金。</div>
-            </div>
+<div class="command">
+<div class="command-name">#work</div>
+<div class="command-desc">仕事をしてネギを得るコマンド。基本給1000ネギ。casino levelが1上がるごとに追加で1000ネギ。クールダウンは4時間。</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#rl</div>
-                <div class="command-desc">#rl系のコマンドについて説明してくれる</div>
-            </div>
+<div class="command">
+<div class="command-name">#slot</div>
+<div class="command-desc">#slot系のコマンドについて説明してくれる</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#rl start [bet] [red|black|0-36]</div>
-                <div class="command-desc">ルーレットを回す。色当ては2倍、数字直撃は36倍。</div>
-            </div>
+<div class="command">
+<div class="command-name">#slot start [bet]</div>
+<div class="command-desc">#slotを始める。betが賭け金。</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#bj</div>
-                <div class="command-desc">#blackjack系のコマンドについて説明してくれる</div>
-            </div>
+<div class="command">
+<div class="command-name">#rl</div>
+<div class="command-desc">#rl系のコマンドについて説明してくれる</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#bj start [bet]</div>
-                <div class="command-desc">ブラックジャックを始める。betが賭け金。</div>
-            </div>
+<div class="command">
+<div class="command-name">#rl start [bet] [red|black|0-36]</div>
+<div class="command-desc">ルーレットを回す。色当ては2倍、数字直撃は36倍。</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#bj hit / bj stand</div>
-                <div class="command-desc">#bjの操作コマンド。</div>
-            </div>
+<div class="command">
+<div class="command-name">#bj</div>
+<div class="command-desc">#blackjack系のコマンドについて説明してくれる</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#poker</div>
-                <div class="command-desc">#poker系のコマンドについて説明してくれる</div>
-            </div>
+<div class="command">
+<div class="command-name">#bj start [bet]</div>
+<div class="command-desc">ブラックジャックを始める。betが賭け金。</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#poker start [bet]</div>
-                <div class="command-desc">#pokerを始める。betが賭け金</div>
-            </div>
+<div class="command">
+<div class="command-name">#bj hit / bj stand</div>
+<div class="command-desc">#bjの操作コマンド。</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#poker hold [num1] [num2] / poker draw</div>
-                <div class="command-desc">保持したいカード番号(1〜5)を指定。指定がない場合は全て引き直す。drawで引き直す</div>
-            </div>
+<div class="command">
+<div class="command-name">#poker</div>
+<div class="command-desc">#poker系のコマンドについて説明してくれる</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#cf</div>
-                <div class="command-desc">#cf系のコマンドについて説明してくれる</div>
-            </div>
+<div class="command">
+<div class="command-name">#poker start [bet]</div>
+<div class="command-desc">#pokerを始める。betが賭け金</div>
+</div>
+
+<div class="command">
+<div class="command-name">#poker hold [num1] [num2] / poker draw</div>
+<div class="command-desc">保持したいカード番号(1〜5)を指定。指定がない場合は全て引き直す。drawで引き直す</div>
+</div>
+
+<div class="command">
+<div class="command-name">#cf</div>
+<div class="command-desc">#cf系のコマンドについて説明してくれる</div>
+</div>
             
-            <div class="command">
-                <div class="command-name">#cf start [bet]</div>
-                <div class="command-desc">コインフリップを始める</div>
-            </div>
+<div class="command">
+<div class="command-name">#cf start [bet]</div>
+<div class="command-desc">コインフリップを始める</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#hilow</div>
-                <div class="command-desc">#hilow系のコマンドについて説明してくれる</div>
-            </div>
+<div class="command">
+<div class="command-name">#hilow</div>
+<div class="command-desc">#hilow系のコマンドについて説明してくれる</div>
+</div>
             
-            <div class="command">
-                <div class="command-name">#hilow start [bet]</div>
-                <div class="command-desc">コインフリップを始める。betは賭け金</div>
-            </div>
+<div class="command">
+<div class="command-name">#hilow start [bet]</div>
+<div class="command-desc">コインフリップを始める。betは賭け金</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#jp</div>
-                <div class="command-desc">#jp系のコマンドについて説明してくれる</div>
-            </div>
+<div class="command">
+<div class="command-name">#jp</div>
+<div class="command-desc">#jp系のコマンドについて説明してくれる</div>
+</div>
             
-            <div class="command">
-                <div class="command-name">#jp start [bet]</div>
-                <div class="command-desc">ジャック‐ポット！</div>
-            </div>
+<div class="command">
+<div class="command-name">#jp start [bet]</div>
+<div class="command-desc">ジャック‐ポット！</div>
+</div>
             
-            <div class="command">
-                <div class="command-name">#hb</div>
-                <div class="command-desc">#hb系のコマンドについて説明してくれる</div>
-            </div>
+<div class="command">
+<div class="command-name">#hb</div>
+<div class="command-desc">#hb系のコマンドについて説明してくれる</div>
+</div>
             
-            <div class="command">
-                <div class="command-name">#hb start [bet]</div>
-                <div class="command-desc">ヒットアンドブローを始めます</div>
-            </div>
+<div class="command">
+<div class="command-name">#hb start [bet]</div>
+<div class="command-desc">ヒットアンドブローを始めます</div>
+</div>
             
-            <div class="command">
-                <div class="command-name">#dice [faces]</div>
-                <div class="command-desc">#diceを振る。facesは目の数。</div>
-            </div>
+<div class="command">
+<div class="command-name">#dice [faces]</div>
+<div class="command-desc">#diceを振る。facesは目の数。</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#loan [amount]</div>
-                <div class="command-desc">[amount]の分借金します。ちゃんと返すんやで！</div>
-            </div>
+<div class="command">
+<div class="command-name">#loan [amount]</div>
+<div class="command-desc">[amount]の分借金します。ちゃんと返すんやで！</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#loan status</div>
-                <div class="command-desc">借金状況を確認できます</div>
-            </div>
+<div class="command">
+<div class="command-name">#loan status</div>
+<div class="command-desc">借金状況を確認できます</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#loan calc</div>
-                <div class="command-desc">借金シミュレーションできます</div>
-            </div>
+<div class="command">
+<div class="command-name">#loan calc</div>
+<div class="command-desc">借金シミュレーションできます</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#repay [amount]</div>
-                <div class="command-desc">[amount]の分お金を返済します。金額がない場合は全額返済します</div>
-            </div>
+<div class="command">
+<div class="command-name">#repay [amount]</div>
+<div class="command-desc">[amount]の分お金を返済します。金額がない場合は全額返済します</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#stock [buy|sell|list|price] [stock]</div>
-                <div class="command-desc">buyで銘柄を購入 sellで銘柄を売却 listで所持している銘柄一覧と価格を表示 priceで今日取引可能な銘柄とその価格を表示します。</div>
-            </div>
+<div class="command">
+<div class="command-name">#stock [buy|sell|list|price] [stock]</div>
+<div class="command-desc">buyで銘柄を購入 sellで銘柄を売却 listで所持している銘柄一覧と価格を表示 priceで今日取引可能な銘柄とその価格を表示します。</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#bank [dep|wit|rank|apply] [amount]</div>
-                <div class="command-desc">#bankで口座残高を確認 depで指定した金額を銀行口座に入金 witで指定した金額を銀行口座から引き出し rankで銀行口座の残高ランキングを確認 applyで今日の利息を受け取れます</div>
-            </div>
+<div class="command">
+<div class="command-name">#bank [dep|wit|rank|apply] [amount]</div>
+<div class="command-desc">#bankで口座残高を確認 depで指定した金額を銀行口座に入金 witで指定した金額を銀行口座から引き出し rankで銀行口座の残高ランキングを確認 applyで今日の利息を受け取れます</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#shop list / #shop buy [item]</div>
-                <div class="command-desc">listで商品一覧を確認 buyで指定した商品を購入できます</div>
-            </div>
+<div class="command">
+<div class="command-name">#shop list / #shop buy [item]</div>
+<div class="command-desc">listで商品一覧を確認 buyで指定した商品を購入できます</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#gift [username] [amount]</div>
-                <div class="command-desc">ネギを好きな人に好きな金額を送ることができます もちろん手数料も50ネギとります</div>
-            </div>
+<div class="command">
+<div class="command-name">#gift [username] [amount]</div>
+<div class="command-desc">ネギを好きな人に好きな金額を送ることができます もちろん手数料も50ネギとります</div>
+</div>
             
-            <div class="command">
-                <div class="command-name">#math [formula]</div>
-                <div class="command-desc">数式を直接入力して計算。サポート: + - * / % ** （^ は ** として扱う）。括弧、単項演算をサポートします。関数呼び出しや名前参照は不可。</div>
-            </div>
-        </div>
+<div class="command">
+<div class="command-name">#math [formula]</div>
+<div class="command-desc">数式を直接入力して計算。サポート: + - * / % ** （^ は ** として扱う）。括弧、単項演算をサポートします。関数呼び出しや名前参照は不可。</div>
+</div>
+</div>
 
-        <div class="card">
-            <h2>管理者コマンド</h2>
-            <p style="color: #666; margin-bottom: 20px;">※レベル3の権限が必要です</p>
+<div class="card">
+<h2>管理者コマンド</h2>
+<p style="color: #666; margin-bottom: 20px;">※レベル3の権限が必要です</p>
             
-            <div class="command">
-                <div class="command-name">#sudo kick [username] <span class="badge admin">lv.3</span></div>
-                <div class="command-desc">指定したユーザーを部屋からキックします</div>
-            </div>
+<div class="command">
+<div class="command-name">#sudo kick [username] <span class="badge admin">lv.3</span></div>
+<div class="command-desc">指定したユーザーを部屋からキックします</div>
+</div>
             
-            <div class="command">
-                <div class="command-name">#sudo setlv [username] 1-3 <span class="badge admin">lv.3</span></div>
-                <div class="command-desc">ユーザーの権限レベルを変更します</div>
-            </div>
+<div class="command">
+<div class="command-name">#sudo setlv [username] 1-3 <span class="badge admin">lv.3</span></div>
+<div class="command-desc">ユーザーの権限レベルを変更します</div>
+</div>
             
-            <div class="command">
-                <div class="command-name">#sudo reboot <span class="badge admin">lv.3</span></div>
-                <div class="command-desc">村を建て直します</div>
-            </div>
+<div class="command">
+<div class="command-name">#sudo reboot <span class="badge admin">lv.3</span></div>
+<div class="command-desc">村を建て直します</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#add money [username] [amount] <span class="badge admin">lv.3</span></div>
-                <div class="command-desc">指定ユーザーに残高を追加します</div>
-            </div>
+<div class="command">
+<div class="command-name">#add money [username] [amount] <span class="badge admin">lv.3</span></div>
+<div class="command-desc">指定ユーザーに残高を追加します</div>
+</div>
 
-            <div class="command">
-                <div class="command-name">#sub money [username] [amount] <span class="badge admin">lv.3</span></div>
-                <div class="command-desc">指定ユーザーの残高を減らします</div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h2>BOTについて</h2>
-            <p>「NEGIRA.BOT」はOnline上で動作する何の特色もないゴミみたいなBOTです。Python製です。頑張って作ったのでばんばんこき使っちゃってください。こき使われると多分BOTも喜びます。</p>
-            
-            <div class="info-box">
-                <h3>主な機能</h3>
-                <ul>
-                    <li>挨拶</li>
-                    <li>村の自動建て直し</li>
-                    <li>権限管理システム</li>
-                    <li>キック機能</li>
-                </ul>
-            </div>
-            
-            <div class="info-box" style="margin-top: 15px;">
-                <h3>権限レベル</h3>
-                <ul>
-                    <li><strong>lv.1</strong> - 一般ユーザー</li>
-                    <li><strong>lv.2</strong> - 信頼ユーザー</li>
-                    <li><strong>lv.3</strong> - BOT / 管理者</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h2>使い方</h2>
-            <ol>
-                <li>村に入室</li>
-                <li>チャットでコマンドを入力（例: <code>#ping</code>）</li>
-                <li>BOTが自動で反応します</li>
-                <li>反応しなかったらそれは心霊現象かバグです</li>
-            </ol>
-            <p style="margin-top: 15px; color: #666;">
-                ※コマンドは必ず<strong>#</strong>を前につけて打ってください
-            </p>
-        </div>
-        
-        <footer>
-            <p>Made with by negiradomoti</p>
-            <p style="margin-top: 10px; font-size: 0.9em;">
-                人狼Online: <a href="https://zinro.net" style="color: white;">zinro.net</a>
-            </p>
-        </footer>
-    </div>
+<div class="command">
+<div class="command-name">#sub money [username] [amount] <span class="badge admin">lv.3</span></div>
+<div class="command-desc">指定ユーザーの残高を減らします</div>
+</div>
+</div>
+
+<div class="card">
+<h2>BOTについて</h2>
+<p>「NEGIRA.BOT」はOnline上で動作する何の特色もないゴミみたいなBOTです。Python製です。頑張って作ったのでばんばんこき使っちゃってください。こき使われると多分BOTも喜びます。</p>
+<div class="info-box">
+<h3>主な機能</h3>
+<ul>
+<li>挨拶</li>
+<li>村の自動建て直し</li>
+<li>権限管理システム</li>
+<li>キック機能</li>
+</ul>
+</div>
+<div class="info-box" style="margin-top:15px;">
+<h3>権限レベル</h3>
+<ul>
+<li><strong>lv.1</strong> - 一般ユーザー</li>
+<li><strong>lv.2</strong> - 信頼ユーザー</li>
+<li><strong>lv.3</strong> - BOT / 管理者</li>
+</ul>
+</div>
+</div>
+
+<div class="card">
+<h2>使い方</h2>
+<ol>
+<li>村に入室</li>
+<li>チャットでコマンドを入力（例: <code>#ping</code>）</li>
+<li>BOTが自動で反応します</li>
+<li>反応しなかったらそれは心霊現象かバグです</li>
+</ol>
+<p style="margin-top:15px;color:#666;">※コマンドは必ず<strong>#</strong>を前につけて打ってください</p>
+</div>
+
+<div class="card">
+<h2>VIP特典</h2>
+<p style="color:#666;margin-bottom:15px;">VIPユーザー限定で各種ボーナスが適用されます。</p>
+<div class="info-box">
+<ul>
+<li><strong>給料・ボーナス：</strong>1.25倍</li>
+<li><strong>給料・ボーナスCT：</strong>75%</li>
+<li><strong>サレンダー還元率：</strong>75%</li>
+<li><strong>銀行利息：</strong>2倍</li>
+<li><strong>ネギフト手数料：</strong>0%</li>
+</ul>
+</div>
+</div>
+
+<footer>
+<p>Made with by negiradomoti</p>
+<p style="margin-top:10px;font-size:.9em;">
+人狼Online: <a href="https://zinro.net" style="color:white;">zinro.net</a>
+</p>
+</footer>
+
+</div>
 </body>
 </html>
